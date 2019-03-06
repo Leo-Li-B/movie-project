@@ -1,50 +1,24 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TextInput } from "react-native";
-import { Header, Button } from "react-native-elements";
+import { View } from "react-native";
+import SearchBar from "./components/SearchBar";
+import AppHeader from "./components/AppHeader";
+
+const API_KEY = "8367b1854dccedcfc9001204de735470";
 
 export default class App extends Component {
-  state = { term: "" };
+  onPressSearch = term => {
+    console.log(term);
+  };
 
   render() {
-    const { containerStyle, searchTextStyle, buttonStyle } = styles;
     return (
       <View style={{ flex: 1, backgroundColor: "#ddd", height: 30 }}>
-        <Header
-          centerComponent={{ text: "Movie Search", style: { color: "white" } }}
-        />
-        <View style={containerStyle}>
-          <TextInput
-            style={searchTextStyle}
-            onChangeText={term => this.setState({ term })} //search term
-            value={this.state.term}
-          />
-
-          <Button
-            buttonStyle={buttonStyle}
-            title="Search"
-            onPress={() => console.log(this.state.term)}
-          />
-        </View>
+        <AppHeader headerText="Movie App" />
+        <SearchBar onPressSearch={this.onPressSearch} />
       </View>
     );
   }
 }
-
-const styles = {
-  containerStyle: {
-    flexDirection: "row",
-    marginTop: 10,
-    marginLeft: 10,
-    marginRight: 10
-  },
-  searchTextStyle: {
-    flex: 1
-  },
-  buttonStyle: {
-    height: 40,
-    marginBottom: 8
-  }
-};
 
 //Header
 //SearchBar

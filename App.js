@@ -106,7 +106,3 @@ const TabNavigator = createBottomTabNavigator(
 );
 
 export default createAppContainer(TabNavigator);
-
-//Header
-//SearchBar
-//List Movies -> listmovieitem

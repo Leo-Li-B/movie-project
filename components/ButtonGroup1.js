@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { ButtonGroup } from "react-native-elements";
+import { createStackNavigator } from "react-navigation";
+// import { People } from "./screens/People";
 
 class ButtonGroup1 extends Component {
   constructor() {
@@ -12,6 +14,12 @@ class ButtonGroup1 extends Component {
 
   updateIndex(selectedIndex) {
     this.setState({ selectedIndex });
+    console.log(selectedIndex);
+    // if (selectedIndex == 1) {
+    //   this.props.navigation.navigate("People");
+    // } else {
+    //   return;
+    // }
   }
 
   render() {
@@ -28,5 +36,8 @@ class ButtonGroup1 extends Component {
     );
   }
 }
+// export const StackNavigator = createStackNavigator({
+//   People: { screen: People }
+// });
 
 export default ButtonGroup1;

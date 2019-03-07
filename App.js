@@ -5,6 +5,8 @@ import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 import { Ionicons } from "@expo/vector-icons";
 import SearchBar from "./components/SearchBar";
 import AppHeader from "./components/AppHeader";
+import ListScreen from "./components/screens/ListScreen";
+import SearchScreen from "./components/screens/SearchScreen";
 import MovieList from "./components/MovieList";
 import ButtonGroup1 from "./components/ButtonGroup1";
 import ButtonGroup2 from "./components/ButtonGroup2";
@@ -38,8 +40,8 @@ export class Search extends Component {
     return (
       <View style={{ flex: 1, backgroundColor: "#ddd", height: 30 }}>
         <AppHeader headerText="Search" />
-        <ButtonGroup1 />
         <SearchBar loading={loading} onPressSearch={this.onPressSearch} />
+        <SearchScreen />
       </View>
     );
   }
@@ -56,10 +58,11 @@ export class NowPlaying extends Component {
 export class Lists extends Component {
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: "#ddd", height: 30 }}>
-        <AppHeader headerText="List" />
-        <ButtonGroup2 />
-      </View>
+      //       <View style={{ flex: 1, backgroundColor: "#ddd", height: 30 }}>
+      //         <AppHeader headerText="List" />
+      //         <ButtonGroup2 />
+      //       </View>
+      <ListScreen />
     );
   }
 }

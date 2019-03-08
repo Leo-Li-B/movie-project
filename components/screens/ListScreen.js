@@ -12,7 +12,7 @@ export class ListScreen extends Component {
     return (
       <View style={{ flex: 1, backgroundColor: "#ddd", height: 30 }}>
         <AppHeader headerText="List" />
-        <ButtonGroup2 />
+        {/* <ButtonGroup2 /> */}
         <ListStack />
       </View>
     );

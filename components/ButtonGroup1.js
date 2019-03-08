@@ -7,7 +7,7 @@ class ButtonGroup1 extends Component {
   constructor() {
     super();
     this.state = {
-      selectedIndex: 2
+      selectedIndex: 0
     };
     this.updateIndex = this.updateIndex.bind(this);
   }
@@ -15,16 +15,11 @@ class ButtonGroup1 extends Component {
   updateIndex(selectedIndex) {
     this.setState({ selectedIndex });
     console.log(selectedIndex);
-    // if (selectedIndex == 1) {
-    //   this.props.navigation.navigate("People");
-    // } else {
-    //   return;
-    // }
   }
 
   render() {
     const buttons = ["Movies", "People", "TV Show"];
-    const { selectedIndex } = this.state;
+    const { selectedIndex } = this.props;
 
     return (
       <ButtonGroup

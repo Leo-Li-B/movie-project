@@ -38,7 +38,7 @@ export class Search extends Component {
   render() {
     const { loading, movie_data } = this.state;
     return (
-      <View style={{ flex: 1, backgroundColor: "#ddd", height: 30 }}>
+      <View style={{ flex: 1, backgroundColor: "#fff", height: 30 }}>
         <AppHeader headerText="Search" />
         <SearchBar loading={loading} onPressSearch={this.onPressSearch} />
         <SearchScreen />
@@ -57,13 +57,7 @@ export class NowPlaying extends Component {
 }
 export class Lists extends Component {
   render() {
-    return (
-      //       <View style={{ flex: 1, backgroundColor: "#ddd", height: 30 }}>
-      //         <AppHeader headerText="List" />
-      //         <ButtonGroup2 />
-      //       </View>
-      <ListScreen />
-    );
+    return <ListScreen />;
   }
 }
 

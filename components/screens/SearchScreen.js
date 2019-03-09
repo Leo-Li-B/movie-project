@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
-import ButtonGroup1 from "../ButtonGroup1";
+
 import AppHeader from "../AppHeader";
 import { ButtonGroup } from "react-native-elements";
 

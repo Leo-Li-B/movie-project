@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
 import { Button } from "react-native-elements";
-import ButtonGroup1 from "../ButtonGroup1";
 
 class Movies extends Component {
   static navigationOptions = {

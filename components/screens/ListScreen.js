@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
-import ButtonGroup2 from "../ButtonGroup2";
+
 import AppHeader from "../AppHeader";
 import Popular from "./Popular";
 import TopRated from "./TopRated";
@@ -12,7 +12,7 @@ export class ListScreen extends Component {
     return (
       <View style={{ flex: 1, backgroundColor: "#ddd", height: 30 }}>
         <AppHeader headerText="List" />
-        {/* <ButtonGroup2 /> */}
+
         <ListStack />
       </View>
     );

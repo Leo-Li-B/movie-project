@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View } from "react-native";
+import { View, Text, Button } from "react-native";
 import axios from "axios";
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 import { Ionicons } from "@expo/vector-icons";
@@ -8,8 +8,8 @@ import AppHeader from "./components/AppHeader";
 import ListScreen from "./components/screens/ListScreen";
 import SearchScreen from "./components/screens/SearchScreen";
 import MovieList from "./components/MovieList";
-import ButtonGroup1 from "./components/ButtonGroup1";
-import ButtonGroup2 from "./components/ButtonGroup2";
+
+import Movies from "./components/screens/Movies";
 
 const API_KEY = "8367b1854dccedcfc9001204de735470";
 
@@ -20,21 +20,34 @@ export class Search extends Component {
   };
 
   onPressSearch = term => {
-    this.axiosSearch(term);
+    this.movieSearch(term);
+  };
+  movieSearch = async term => {
+    const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${term}&include_adult=false`;
+
+    const api_call = await fetch(url);
+
+    const data = await api_call.json();
+
+    this.setState({
+      movie_data: data.results
+    });
   };
 
-  axiosSearch = term => {
-    this.setState({ loading: true });
-    axios
-      .get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${term}&include_adult=false`
-      )
-      .then(res => {
-        const movie_data = res.data;
-        console.log(movie_data);
-        this.setState({ loading: false, movie_data });
-      });
-  };
+  // axiosSearch = term => {
+  //   this.setState({ loading: true });
+  //   axios
+  //     .get(
+  //       `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${term}&include_adult=false`
+  //     )
+  //     .then(res => {
+  //       const movie_data = res.data;
+
+  //       this.setState({ loading: false, movie_data: movie_data });
+  //       console.log(movie_data);
+  //     });
+  // };
+
   render() {
     const { loading, movie_data } = this.state;
     return (
@@ -42,6 +55,7 @@ export class Search extends Component {
         <AppHeader headerText="Search" />
         <SearchBar loading={loading} onPressSearch={this.onPressSearch} />
         <SearchScreen />
+        <MovieList movie_data={movie_data} />
       </View>
     );
   }

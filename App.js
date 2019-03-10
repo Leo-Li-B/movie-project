@@ -7,64 +7,44 @@ import SearchBar from "./components/SearchBar";
 import AppHeader from "./components/AppHeader";
 import ListScreen from "./components/screens/ListScreen";
 import SearchScreen from "./components/screens/SearchScreen";
-import MovieList from "./components/MovieList";
+import NowPlayingList from "./components/NowPlayingList";
 
 import Movies from "./components/screens/Movies";
 
 const API_KEY = "8367b1854dccedcfc9001204de735470";
 
 export class Search extends Component {
-  // state = {
-  //   loading: false,
-  //   movie_data: []
-  // };
-
-  // onPressSearch = term => {
-  //   this.movieSearch(term);
-  // };
-  // movieSearch = async term => {
-  //   const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${term}&include_adult=false`;
-
-  //   const api_call = await fetch(url);
-
-  //   const data = await api_call.json();
-
-  //   this.setState({
-  //     movie_data: data.results
-  //   });
-  // };
-
-  // axiosSearch = term => {
-  //   this.setState({ loading: true });
-  //   axios
-  //     .get(
-  //       `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${term}&include_adult=false`
-  //     )
-  //     .then(res => {
-  //       const movie_data = res.data;
-
-  //       this.setState({ loading: false, movie_data: movie_data });
-  //       console.log(movie_data);
-  //     });
-  // };
-
   render() {
     // const { loading, movie_data } = this.state;
     return (
       <View style={{ flex: 1, backgroundColor: "#fff", height: 30 }}>
         <AppHeader headerText="Search" />
-        {/* <SearchBar loading={loading} onPressSearch={this.onPressSearch} /> */}
         <SearchScreen />
-        {/* <MovieList movie_data={movie_data} /> */}
       </View>
     );
   }
 }
 export class NowPlaying extends Component {
+  state = {
+    NowPlaying_data: []
+  };
+  componentDidMount() {
+    fetch(
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US`
+    )
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ NowPlaying_data: data.results });
+      });
+  }
+
   render() {
+    const { NowPlaying_data } = this.state;
     return (
       <View style={{ flex: 1, backgroundColor: "#ddd", height: 30 }}>
         <AppHeader headerText="Now Playing" />
+
+        <NowPlayingList NowPlaying_data={NowPlaying_data} />
       </View>
     );
   }

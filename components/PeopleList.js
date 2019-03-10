@@ -9,10 +9,7 @@ const PeopleList = ({ people_data }) => {
 
   return (
     <ScrollView>
-      <View style={styles.containerStyle}>
-        {peopleItems}
-        {/* {peopleMovieItems} */}
-      </View>
+      <View style={styles.containerStyle}>{peopleItems}</View>
     </ScrollView>
   );
 };

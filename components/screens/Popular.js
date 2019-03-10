@@ -1,12 +1,30 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
 import { Button } from "react-native-elements";
+import PopularList from "../PopularList";
+
+const API_KEY = "8367b1854dccedcfc9001204de735470";
 
 class Popular extends Component {
   static navigationOptions = {
     header: null
   };
+  state = {
+    Popular_data: []
+  };
+  componentDidMount() {
+    fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US`
+    )
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ Popular_data: data.results });
+      });
+  }
+
   render() {
+    const { Popular_data } = this.state;
+
     return (
       <View>
         <View
@@ -40,7 +58,7 @@ class Popular extends Component {
             }}
           />
         </View>
-        <Text>Popular</Text>
+        <PopularList Popular_data={Popular_data} />
       </View>
     );
   }

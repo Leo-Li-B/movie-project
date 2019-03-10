@@ -14,25 +14,25 @@ import Movies from "./components/screens/Movies";
 const API_KEY = "8367b1854dccedcfc9001204de735470";
 
 export class Search extends Component {
-  state = {
-    loading: false,
-    movie_data: []
-  };
+  // state = {
+  //   loading: false,
+  //   movie_data: []
+  // };
 
-  onPressSearch = term => {
-    this.movieSearch(term);
-  };
-  movieSearch = async term => {
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${term}&include_adult=false`;
+  // onPressSearch = term => {
+  //   this.movieSearch(term);
+  // };
+  // movieSearch = async term => {
+  //   const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${term}&include_adult=false`;
 
-    const api_call = await fetch(url);
+  //   const api_call = await fetch(url);
 
-    const data = await api_call.json();
+  //   const data = await api_call.json();
 
-    this.setState({
-      movie_data: data.results
-    });
-  };
+  //   this.setState({
+  //     movie_data: data.results
+  //   });
+  // };
 
   // axiosSearch = term => {
   //   this.setState({ loading: true });
@@ -49,13 +49,13 @@ export class Search extends Component {
   // };
 
   render() {
-    const { loading, movie_data } = this.state;
+    // const { loading, movie_data } = this.state;
     return (
       <View style={{ flex: 1, backgroundColor: "#fff", height: 30 }}>
         <AppHeader headerText="Search" />
-        <SearchBar loading={loading} onPressSearch={this.onPressSearch} />
+        {/* <SearchBar loading={loading} onPressSearch={this.onPressSearch} /> */}
         <SearchScreen />
-        <MovieList movie_data={movie_data} />
+        {/* <MovieList movie_data={movie_data} /> */}
       </View>
     );
   }

@@ -1,12 +1,38 @@
 import React, { Component } from "react";
 import { View, Text } from "react-native";
 import { Button } from "react-native-elements";
+import SearchBar from "../SearchBar";
+import MovieList from "../MovieList";
+import PeopleList from "../PeopleList";
+
+const API_KEY = "8367b1854dccedcfc9001204de735470";
 
 class People extends Component {
   static navigationOptions = {
     header: null
   };
+  state = {
+    loading: false,
+    people_data: []
+  };
+
+  onPressSearch = term => {
+    this.movieSearch(term);
+  };
+  movieSearch = async term => {
+    const url = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&language=en-US&query=${term}&include_adult=false`;
+
+    const api_call = await fetch(url);
+
+    const data = await api_call.json();
+
+    this.setState({
+      people_data: data.results
+    });
+  };
+
   render() {
+    const { loading, people_data } = this.state;
     return (
       <View>
         <View
@@ -31,7 +57,8 @@ class People extends Component {
             style={{ width: 100, height: 50 }}
           />
         </View>
-        <Text>People</Text>
+        <SearchBar loading={loading} onPressSearch={this.onPressSearch} />
+        <PeopleList people_data={people_data} />
       </View>
     );
   }

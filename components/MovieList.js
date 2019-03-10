@@ -1,7 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import { ScrollView, View } from "react-native";
 import MovieListItem from "./MovieListItem";
-import SearchScreen from "./screens/SearchScreen";
 
 const MovieList = ({ movie_data }) => {
   const movieItems = movie_data.map(movie_data => (

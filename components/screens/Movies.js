@@ -12,7 +12,8 @@ class Movies extends Component {
 
   state = {
     loading: false,
-    movie_data: []
+    movie_data: [],
+    term: ""
   };
 
   onPressSearch = term => {
@@ -25,13 +26,21 @@ class Movies extends Component {
 
     const data = await api_call.json();
 
-    this.setState({
-      movie_data: data.results
-    });
+    if (term) {
+      this.setState({
+        movie_data: data.results,
+        term: term
+      });
+    } else {
+      this.setState({
+        term: "Nothing"
+      });
+    }
   };
 
   render() {
-    const { loading, movie_data } = this.state;
+    const { loading, movie_data, term } = this.state;
+
     return (
       <View>
         <View
@@ -66,6 +75,7 @@ class Movies extends Component {
           />
         </View>
         <SearchBar loading={loading} onPressSearch={this.onPressSearch} />
+        <Text>Searched for: {term} </Text>
         <MovieList movie_data={movie_data} />
       </View>
     );

@@ -12,7 +12,8 @@ class TvShows extends Component {
   };
   state = {
     loading: false,
-    Tv_data: []
+    Tv_data: [],
+    term: ""
   };
 
   onPressSearch = term => {
@@ -25,12 +26,19 @@ class TvShows extends Component {
 
     const data = await api_call.json();
 
-    this.setState({
-      Tv_data: data.results
-    });
+    if (term) {
+      this.setState({
+        Tv_data: data.results,
+        term: term
+      });
+    } else {
+      this.setState({
+        term: "Nothing"
+      });
+    }
   };
   render() {
-    const { loading, Tv_data } = this.state;
+    const { loading, Tv_data, term } = this.state;
     return (
       <View>
         <View
@@ -56,6 +64,7 @@ class TvShows extends Component {
           />
         </View>
         <SearchBar loading={loading} onPressSearch={this.onPressSearch} />
+        <Text>Searched for: {term}</Text>
         <TvList Tv_data={Tv_data} />
       </View>
     );

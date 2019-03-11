@@ -13,7 +13,8 @@ class People extends Component {
   };
   state = {
     loading: false,
-    people_data: []
+    people_data: [],
+    term: ""
   };
 
   onPressSearch = term => {
@@ -25,14 +26,20 @@ class People extends Component {
     const api_call = await fetch(url);
 
     const data = await api_call.json();
-
-    this.setState({
-      people_data: data.results
-    });
+    if (term) {
+      this.setState({
+        people_data: data.results,
+        term: term
+      });
+    } else {
+      this.setState({
+        term: "Nothing"
+      });
+    }
   };
 
   render() {
-    const { loading, people_data } = this.state;
+    const { loading, people_data, term } = this.state;
     return (
       <View>
         <View
@@ -58,6 +65,7 @@ class People extends Component {
           />
         </View>
         <SearchBar loading={loading} onPressSearch={this.onPressSearch} />
+        <Text>Searched for: {term}</Text>
         <PeopleList people_data={people_data} />
       </View>
     );

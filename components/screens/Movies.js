@@ -42,7 +42,7 @@ class Movies extends Component {
     const { loading, movie_data, term } = this.state;
 
     return (
-      <View>
+      <View style={{ marginTop: 20 }}>
         <View
           style={{
             flexDirection: "row",
@@ -64,6 +64,7 @@ class Movies extends Component {
               width: 100,
               height: 50
             }}
+            type="outline"
           />
           <Button
             title="TvShows"
@@ -72,10 +73,15 @@ class Movies extends Component {
               width: 100,
               height: 50
             }}
+            type="outline"
           />
         </View>
         <SearchBar loading={loading} onPressSearch={this.onPressSearch} />
-        <Text>Searched for: {term} </Text>
+        <Text
+          style={{ textAlign: "center", fontWeight: "bold", marginBottom: 10 }}
+        >
+          Searched for: {term}{" "}
+        </Text>
         <MovieList movie_data={movie_data} />
       </View>
     );

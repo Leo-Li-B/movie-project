@@ -25,7 +25,7 @@ class Upcoming extends Component {
   render() {
     const { Upcoming_data } = this.state;
     return (
-      <View>
+      <View style={{ marginTop: 20, marginBottom: 20 }}>
         <View
           style={{
             flexDirection: "row",
@@ -39,14 +39,16 @@ class Upcoming extends Component {
               width: 100,
               height: 50
             }}
+            type="outline"
           />
           <Button
-            title="TopRated"
+            title="Top Rated"
             onPress={() => this.props.navigation.navigate("TopRated")}
             style={{
               width: 100,
               height: 50
             }}
+            type="outline"
           />
           <Button
             title="Upcoming"
@@ -57,6 +59,16 @@ class Upcoming extends Component {
             }}
           />
         </View>
+        <Text
+          style={{
+            marginBottom: 10,
+            textAlign: "center",
+            fontWeight: "bold",
+            fontSize: 20
+          }}
+        >
+          Upcoming Movies
+        </Text>
         <UpcomingList Upcoming_data={Upcoming_data} />
       </View>
     );

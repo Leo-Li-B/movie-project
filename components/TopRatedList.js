@@ -8,7 +8,7 @@ const TopRatedList = ({ TopRated_data }) => {
   ));
 
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: "#ddd" }}>
       <View style={styles.containerStyle}>{TopRatedItems}</View>
     </ScrollView>
   );

@@ -40,7 +40,7 @@ class TvShows extends Component {
   render() {
     const { loading, Tv_data, term } = this.state;
     return (
-      <View>
+      <View style={{ marginTop: 20 }}>
         <View
           style={{
             flexDirection: "row",
@@ -51,11 +51,13 @@ class TvShows extends Component {
             title="Movies"
             onPress={() => this.props.navigation.navigate("Movies")}
             style={{ width: 100, height: 50 }}
+            type="outline"
           />
           <Button
             title="People"
             onPress={() => this.props.navigation.navigate("People")}
             style={{ width: 100, height: 50 }}
+            type="outline"
           />
           <Button
             title="TvShows"
@@ -64,7 +66,11 @@ class TvShows extends Component {
           />
         </View>
         <SearchBar loading={loading} onPressSearch={this.onPressSearch} />
-        <Text>Searched for: {term}</Text>
+        <Text
+          style={{ textAlign: "center", fontWeight: "bold", marginBottom: 10 }}
+        >
+          Searched for: {term}
+        </Text>
         <TvList Tv_data={Tv_data} />
       </View>
     );

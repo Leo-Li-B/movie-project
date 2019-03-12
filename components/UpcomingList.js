@@ -8,7 +8,7 @@ const UpcomingList = ({ Upcoming_data }) => {
   ));
 
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: "#ddd" }}>
       <View style={styles.containerStyle}>{UpcomingItems}</View>
     </ScrollView>
   );

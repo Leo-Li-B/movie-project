@@ -41,7 +41,7 @@ class People extends Component {
   render() {
     const { loading, people_data, term } = this.state;
     return (
-      <View>
+      <View style={{ marginTop: 20 }}>
         <View
           style={{
             flexDirection: "row",
@@ -52,6 +52,7 @@ class People extends Component {
             title="Movies"
             onPress={() => this.props.navigation.navigate("Movies")}
             style={{ width: 100, height: 50 }}
+            type="outline"
           />
           <Button
             title="People"
@@ -62,10 +63,15 @@ class People extends Component {
             title="TvShows"
             onPress={() => this.props.navigation.navigate("TvShows")}
             style={{ width: 100, height: 50 }}
+            type="outline"
           />
         </View>
         <SearchBar loading={loading} onPressSearch={this.onPressSearch} />
-        <Text>Searched for: {term}</Text>
+        <Text
+          style={{ textAlign: "center", fontWeight: "bold", marginBottom: 10 }}
+        >
+          Searched for: {term}
+        </Text>
         <PeopleList people_data={people_data} />
       </View>
     );

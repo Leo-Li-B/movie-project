@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import { View, Text, Button } from "react-native";
-import axios from "axios";
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 import { Ionicons } from "@expo/vector-icons";
-import SearchBar from "./components/SearchBar";
 import AppHeader from "./components/AppHeader";
 import ListScreen from "./components/screens/ListScreen";
 import SearchScreen from "./components/screens/SearchScreen";
 import NowPlayingList from "./components/NowPlayingList";
-
-import Movies from "./components/screens/Movies";
 
 const API_KEY = "8367b1854dccedcfc9001204de735470";
 
@@ -17,7 +13,7 @@ export class Search extends Component {
   render() {
     // const { loading, movie_data } = this.state;
     return (
-      <View style={{ flex: 1, backgroundColor: "#fff", height: 30 }}>
+      <View style={{ flex: 1, backgroundColor: "#ddd", height: 30 }}>
         <AppHeader headerText="Search" />
         <SearchScreen />
       </View>

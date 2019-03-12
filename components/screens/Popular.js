@@ -26,7 +26,7 @@ class Popular extends Component {
     const { Popular_data } = this.state;
 
     return (
-      <View>
+      <View style={{ marginTop: 20, marginBottom: 20 }}>
         <View
           style={{
             flexDirection: "row",
@@ -42,12 +42,13 @@ class Popular extends Component {
             }}
           />
           <Button
-            title="TopRated"
+            title="Top Rated"
             onPress={() => this.props.navigation.navigate("TopRated")}
             style={{
               width: 100,
               height: 50
             }}
+            type="outline"
           />
           <Button
             title="Upcoming"
@@ -56,8 +57,19 @@ class Popular extends Component {
               width: 100,
               height: 50
             }}
+            type="outline"
           />
         </View>
+        <Text
+          style={{
+            marginBottom: 10,
+            textAlign: "center",
+            fontWeight: "bold",
+            fontSize: 20
+          }}
+        >
+          Popular Movies
+        </Text>
         <PopularList Popular_data={Popular_data} />
       </View>
     );

@@ -8,7 +8,7 @@ const PopularList = ({ Popular_data }) => {
   ));
 
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: "#ddd" }}>
       <View style={styles.containerStyle}>{PopularItems}</View>
     </ScrollView>
   );
